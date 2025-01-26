@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model tbl_user {
+  id                                       BigInt                @id @default(autoincrement())
+  name                                     String?               @db.VarChar(256)
+  email                                    String?               @db.VarChar(256)
+  password                                 String?               @db.VarChar(256)
+  token                                    String?
+  verify_token                             String?               @db.VarChar(128)
+  verify_token_expiry                      DateTime?             @db.Timestamp(0)
+  forgot_token                           String?               @db.VarChar(128)
+  forgot_token_expiry                      DateTime?             @db.Timestamp(0)
+  is_online                                Boolean?              @default(false)
+  is_verify                                Boolean?              @default(false)
+  is_active                                Boolean?              @default(true)
+  is_delete                                Boolean?              @default(false)
+  logged_at                                DateTime?
+  verified_at                              DateTime?
+  forgoted_at                              DateTime?
+  deleted_at                               DateTime?
+  inserted_at                              DateTime?             @default(now())
+  updated_at                               DateTime?             @updatedAt
+
+  @@index([name, email, password, token, verify_token, forgot_token, is_active, is_delete, is_verify])
+}
