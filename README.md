@@ -63,7 +63,7 @@ require("dotenv").config(); // Add this line if not present
 // Import necessary libraries
 const express = require('express');
 const { createDoc } = require('node-api-document');
-const apiDoc = require('./nyu_auth.api-doc');
+const apiDoc = require('./node_prisma.api-doc');
 const apiPath = require('./modules/v1/api');
 ```
 
@@ -108,7 +108,7 @@ Here is the full code for the main file to use the authentication API:
 require("dotenv").config(); // Add this line if not present
 const express = require('express');
 const { createDoc } = require('node-api-document');
-const apiDoc = require('./nyu_auth.api-doc');
+const apiDoc = require('./node_prisma.api-doc');
 const apiPath = require('./modules/v1/api');
 const app = express();
 

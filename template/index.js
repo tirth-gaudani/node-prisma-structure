@@ -5,7 +5,7 @@ const compression = require('compression')
 const cors = require('cors');
 const { createDoc } = require('node-api-document');
 const rateLimit = require('express-rate-limit');
-const apiDoc = require('./nyu_auth.api-doc');
+const apiDoc = require('./node_prisma.api-doc');
 const apiPath = require('./modules/v1/api');
 const app = express();
 

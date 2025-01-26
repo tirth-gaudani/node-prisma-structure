@@ -1,4 +1,4 @@
-const { BASE_URL_WITHOUT_API_DOC } = require("./config/nyu_auth.constants");
+const { BASE_URL_WITHOUT_API_DOC } = require("./config/node_prisma.constants");
 
 let i = 1;
 

@@ -1,6 +1,6 @@
 {
   "name": "node-prisma-structure",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Node.js API structure using Prisma ORM for scalable and modular development. This package includes a complete authentication API (signup, login, logout, password reset, and token-based authentication) and provides a well-organized directory structure for building robust RESTful APIs.",
   "main": "index.js",
   "scripts": {
@@ -16,11 +16,12 @@
   "keywords": [
     "node-prisma-structure",
     "create-prisma-structure",
-    "prisma",
     "auth-api",
-    "node.js",
+    "Node.js",
     "child_process",
     "fs-extra",
+    "prisma",
+    "postgreSql",
     "copy-api",
     "Node.js prisma api structure",
     "Node.js api structure"
@@ -34,5 +35,25 @@
   "dependencies": {
     "child_process": "^1.0.2",
     "fs-extra": "^11.3.0"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.2.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "compression": "^1.7.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "is-check-disposable-email": "^0.0.3",
+    "joi": "^17.13.3",
+    "json-bigint": "^1.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "localizify": "^2.0.0",
+    "node-api-document": "^0.0.5",
+    "node-cache": "^5.1.2",
+    "nodemailer": "^6.10.0",
+    "path": "^0.12.7"
   }
 }
