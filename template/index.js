@@ -5,8 +5,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const compression = require('compression')
 const cors = require('cors');
-const createDoc = require('node-api-document');
+const { createDoc } = require('node-api-document');
 const rateLimit = require('express-rate-limit');
+const { ipKeyGenerator } = require('express-rate-limit');
 const apiDoc = require('./api-doc');
 const apiPath = require('./modules/v1/api');
 const app = express();
@@ -47,7 +48,7 @@ app.use(rateLimit({
             let tokenFetched = req.header('Authorization');
             token = tokenFetched?.replace('Bearer ', '');
         }
-        return req.headers['z-user-ip'] || req?.loginUser?.token || token || req.ip;
+        return req.headers['z-user-ip'] || req?.loginUser?.token || token || ipKeyGenerator(req);
     },
     message: { code: 429, status: "error", message: "Too many requests, please try again later." },
     standardHeaders: true,
@@ -59,13 +60,6 @@ app.use(bodyParser.urlencoded({
     extended: true,
     limit: '35mb',
     parameterLimit: 50000,
-}));
-
-app.use(session({
-    secret: 'project-test', // Replace with your own secret key
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false } // Set to true if using HTTPS
 }));
 
 app.engine('html', require('ejs').renderFile);
@@ -85,7 +79,7 @@ app.use(function onError(err, req, res, next) {
 });
 
 // 404 handler
-app.use("*", (req, res) => {
+app.use("/", (req, res) => {
     res.status(404).json({ status: "error", message: '404 Not Found' });
 });
 
