@@ -1,11 +1,11 @@
-const { BASE_URL_WITHOUT_API_DOC } = require("./config/node_prisma.constants");
+const { BASE_URL_WITHOUT_API_DOC } = require("./config/constants");
 
 let i = 1;
 
 const apiDoc =[
     {},
     {
-        "new_tag": "2",
+        "new_tag": "1",
         "color": "red",
         "title": "AUTH API",
         "icon": "person"

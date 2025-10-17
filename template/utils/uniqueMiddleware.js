@@ -1,5 +1,5 @@
 const isCheckDisposableEmail = require('is-check-disposable-email');
-const { sendResponse } = require('../middleware/node_prisma.headerValidator');
+const { sendResponse } = require('../middleware/headerValidator');
 const { prisma } = require('../modules/v1/prismaClient');
 
 const uniqueCheck = {

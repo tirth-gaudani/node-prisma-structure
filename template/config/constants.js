@@ -2,6 +2,7 @@ module.exports = {
     'APP_NAME': process.env.APP_NAME,
     'LOGO_URL': process.env.LOGO_URL,
     'FRONT_BASE_URL': process.env.FRONT_BASE_URL,
+    'BASE_URL': process.env.BASE_URL,
 
     'BASE_URL_WITHOUT_API_DOC':process.env.BASE_URL+'v1/',
 

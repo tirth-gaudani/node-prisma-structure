@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-router.use('/auth', require('./Auth/node_prisma.auth.route'));
+router.use('/auth', require('./Auth/auth.route'));
 
 module.exports = router;

@@ -1,9 +1,9 @@
-const { sendResponse } = require('../../../../middleware/node_prisma.headerValidator');
-const { jwt_sign, sendEmail, generateRandomNumericString } = require('../../../../utils/node_prisma.common');
+const { sendResponse } = require('../../../../middleware/headerValidator');
+const { jwt_sign, sendEmail, generateRandomNumericString } = require('../../../../utils/common');
 const bcrypt = require('bcryptjs');
-const { FRONT_BASE_URL, APP_NAME } = require('../../../../config/node_prisma.constants');
-const { insertUser, updateUser, userData, checkUserExists } = require('../../models/node_prisma.userModel');
-const email_verify_template = require('../../../../views/email_templates/node_prisma.email_verify_template');
+const { FRONT_BASE_URL, APP_NAME } = require('../../../../config/constants');
+const { insertUser, updateUser, userData, checkUserExists } = require('../../models/userModel');
+const email_verify_template = require('../../../../views/email_templates/email_verify_template');
 
 //////////////////////////////////////////////////////////////////////
 //                            Auth API                              //

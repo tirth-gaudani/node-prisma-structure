@@ -63,8 +63,8 @@ require("dotenv").config(); // Add this line if not present
 // Import necessary libraries
 const express = require('express');
 const { createDoc } = require('node-api-document');
-const apiDoc = require('./node_prisma.api-doc');
-const apiPath = require('./modules/v1/api');
+const apiDoc = require('./nyu_auth.api-doc');
+const apiPath = require('./modules/api');
 ```
 
 ### Configure Express
@@ -108,8 +108,8 @@ Here is the full code for the main file to use the authentication API:
 require("dotenv").config(); // Add this line if not present
 const express = require('express');
 const { createDoc } = require('node-api-document');
-const apiDoc = require('./node_prisma.api-doc');
-const apiPath = require('./modules/v1/api');
+const apiDoc = require('./nyu_auth.api-doc');
+const apiPath = require('./modules/api');
 const app = express();
 
 // API Config
@@ -128,6 +128,12 @@ app.listen(process.env.PORT || 3000, () => {
 });
 ```
 
+### Setup Sentry for Error Monitoring
+To set up Sentry for error tracking, run the following command:
+```bash
+npx @sentry/wizard@latest -i sourcemaps
+```
+
 ### Start your project
 
 - If `nodemon` is installed, use the following command to start the project:
@@ -142,24 +148,24 @@ app.listen(process.env.PORT || 3000, () => {
   node index.js
 ```
 
-## Notes
+## 🔖 Notes
 - Ensure that your `.env` file is properly configured with the correct database URL and API keys for seamless integration.
 - The `createDoc` function automatically generates API documentation based on your API's main path. Once set up, the documentation can be accessed at the following endpoint: `http://localhost:3000/api-doc/`.
 - You can customize the port number in the `app.listen()` method to suit your project’s configuration.
 
-## Prerequisites
+## 📌 Prerequisites
 - **Node.js**: Ensure you have Node.js installed on your system with version **20.12.0** or higher.
 - **Prisma**: Make sure you have Prisma configured for database handling.
 - **Environment Variables**: Properly configure the .env file as per your project requirements.
 
 
-## Contributing
+## 🤝 Contributing
 
 Feel free to submit issues or pull requests for new features, bug fixes, or general improvements.
 
 
 ## 🔗 Author Details
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://tirth-gaudani.github.io/portfolio/)
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.tirth-gaudani.ct.ws/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://in.linkedin.com/in/tirthgaudani)
 
 

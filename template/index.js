@@ -1,11 +1,13 @@
 require("dotenv").config();
+require("./utils/instrument");
+const Sentry = require("@sentry/node");
 const express = require('express');
 const bodyParser = require('body-parser');
 const compression = require('compression')
 const cors = require('cors');
-const { createDoc } = require('node-api-document');
+const createDoc = require('node-api-document');
 const rateLimit = require('express-rate-limit');
-const apiDoc = require('./node_prisma.api-doc');
+const apiDoc = require('./api-doc');
 const apiPath = require('./modules/v1/api');
 const app = express();
 
@@ -26,6 +28,14 @@ app.use(cors({
     credentials: true,
 }));
 
+app.use((err, req, res, next) => {
+    if (err instanceof Error && err.message.startsWith('CORS error')) {
+        res.status(403).json({ message: err.message });
+    } else {
+        next(err);
+    }
+});
+
 app.use(compression());
 
 app.use(rateLimit({
@@ -44,17 +54,6 @@ app.use(rateLimit({
     legacyHeaders: false,
 }));
 
-app.use((err, req, res, next) => {
-    if (err instanceof Error && err.message.startsWith('CORS error')) {
-        res.status(403).json({ message: err.message });
-    } else {
-        next(err);
-    }
-});
-
-app.use(express.json());
-app.use(express.text());
-
 app.use(bodyParser.json({ limit: '35mb' }));
 app.use(bodyParser.urlencoded({
     extended: true,
@@ -62,12 +61,28 @@ app.use(bodyParser.urlencoded({
     parameterLimit: 50000,
 }));
 
+app.use(session({
+    secret: 'project-test', // Replace with your own secret key
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Set to true if using HTTPS
+}));
+
 app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 
 app.use('/v1/', apiPath);
 
 createDoc(app, 'api-key, token, accept-language, z-user-ip', apiDoc);
+
+// 🛑 Capture unhandled errors globally
+Sentry.setupExpressErrorHandler(app);
+
+app.use(function onError(err, req, res, next) {
+    console.error("Error =-->   ", err);
+    console.error("Sentry Error =--->>  ", res.sentry + "\n");
+    res.status(500).json({ status: "error", message: "Something went wrong!" });
+});
 
 // 404 handler
 app.use("*", (req, res) => {
@@ -82,5 +97,5 @@ try {
         console.log(`😈 Worker ${process.pid}\x1b[33m App Running \x1b[0m\x1b[37m\x1b[1m⚡\x1b[33mOn 🔥 \x1b[4m\x1b[36m\x1b[1m` + PORT + `\x1b[0m 🔥`);
     });
 } catch (error) {
-    console.log('error in server -==-=-=-=--  ', error);
+    console.log('error in server =---->>  ', error);
 }

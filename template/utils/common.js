@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const nodemailer = require("nodemailer");
-const { EMAIL_SERVICE, EMAIL_PORT, EMAIL_SECURE, EMAIL, PASSWORD } = require('../config/node_prisma.constants');
+const { EMAIL_SERVICE, EMAIL_PORT, EMAIL_SECURE, EMAIL, PASSWORD } = require('../config/constants');
 
 const common = {
 

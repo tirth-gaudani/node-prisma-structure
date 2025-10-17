@@ -1,9 +1,9 @@
-const { checkBodyInline, checkToken, checkApiKey } = require('../../../../middleware/node_prisma.headerValidator.js');
+const { checkBodyInline, checkToken, checkApiKey } = require('../../../../middleware/headerValidator.js');
 const express = require('express');
 const router = express.Router();
-const authModel = require('./node_prisma.auth.model.js');
-const auth_rules = require('./rules/node_prisma.auth.rules.js');
-const { userCheckEmail, userCheckEmailForEdit } = require('../../../../utils/node_prisma.uniqueMiddleware.js');
+const authModel = require('./auth.model.js');
+const auth_rules = require('./rules/auth.rules.js');
+const { userCheckEmail, userCheckEmailForEdit } = require('../../../../utils/uniqueMiddleware.js');
 
 //////////////////////////////////////////////////////////////////////
 //                              Auth                                //

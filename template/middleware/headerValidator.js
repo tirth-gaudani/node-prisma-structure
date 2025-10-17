@@ -2,7 +2,7 @@ const en = require('../languages/en.js');
 const { t, default: localizify } = require('localizify');
 const jwt = require('jsonwebtoken');
 const NodeCache = require('node-cache');
-const { verifyTokenCheck } = require('../modules/v1/models/node_prisma.userModel.js');
+const { verifyTokenCheck } = require('../modules/v1/models/userModel.js');
 const cache = new NodeCache();
 
 const checkApiKey = function (req, res, next) {
