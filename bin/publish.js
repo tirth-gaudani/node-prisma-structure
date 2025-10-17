@@ -8,7 +8,7 @@ console.log("\033[34m Running install project setup script...");
 
 async function installingDependency() {
   try {
-    const dependencyArray = ['@prisma/client', 'dotenv', 'express', 'body-parser', 'cors', 'ejs', 'is-check-disposable-email', 'jsonwebtoken', 'connect-flash', 'nodemailer', 'path', 'moment','compression','express-rate-limit','express-session','@sentry/node','@sentry/profiling-node','bcryptjs','joi','express-fileupload'];
+    const dependencyArray = ['@prisma/client', 'node-api-document', 'localizify', 'node-cache', 'json-bigint', 'dotenv', 'express', 'body-parser', 'cors', 'ejs', 'is-check-disposable-email', 'jsonwebtoken', 'connect-flash', 'nodemailer', 'path', 'moment','compression','express-rate-limit','express-session','@sentry/node','@sentry/profiling-node','bcryptjs','joi','express-fileupload'];
     const dependencies = dependencyArray?.length > 0 ? dependencyArray?.join(' ') : '';
     if (dependencies) {
       console.log("\x1b[33m Installing dependencies \033[36m", dependencies," \033[37m...");

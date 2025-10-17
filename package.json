@@ -1,6 +1,6 @@
 {
   "name": "node-prisma-structure",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A Node.js API structure using Prisma ORM for scalable and modular development. This package includes a complete authentication API (signup, login, logout, password reset, and token-based authentication) and provides a well-organized directory structure for building robust RESTful APIs.",
   "main": "./bin/publish.js",
   "scripts": {
